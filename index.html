@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natacha — Votre annonce ressuscitée | Avenue des Chataigniers 15, Rhode-Saint-Genèse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===========================
+       DESIGN SYSTEM — TOKENS
+    =========================== */
+    :root {
+      --primary:   #000887;
+      --accent:    #ED51C2;
+      --text:      #111111;
+      --surface:   #F5F5F5;
+      --border:    #E5E7EB;
+      --white:     #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 4px 16px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
+      --transition: 0.4s ease;
+    }
+
+    /* ===========================
+       RESET & BASE
+    =========================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Epilogue', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===========================
+       TYPOGRAPHY
+    =========================== */
+    h1 {
+      font-size: clamp(40px, 7vw, 68px);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--primary);
+      letter-spacing: -0.015em;
+    }
+    h3 {
+      font-size: clamp(20px, 2.5vw, 26px);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--primary);
+    }
+    p { margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ===========================
+       LAYOUT UTILITIES
+    =========================== */
+    .container {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section {
+      padding: 80px 0;
+    }
+    @media (max-width: 768px) {
+      .section { padding: 56px 0; }
+    }
+    .surface-bg { background: var(--surface); }
+
+    /* ===========================
+       BADGE / LABEL
+    =========================== */
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--primary);
+    }
+    .badge--accent {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+    .badge--primary {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    /* ===========================
+       CARD
+    =========================== */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ===========================
+       CTA BUTTON
+    =========================== */
+    .btn-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Epilogue', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 18px 36px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      letter-spacing: 0.01em;
+    }
+    .btn-cta:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ===========================
+       ENTRANCE ANIMATIONS
+    =========================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp var(--transition) forwards;
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.05s; }
+    .fade-in:nth-child(2) { animation-delay: 0.15s; }
+    .fade-in:nth-child(3) { animation-delay: 0.25s; }
+    .fade-in:nth-child(4) { animation-delay: 0.35s; }
+    .fade-in:nth-child(5) { animation-delay: 0.45s; }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===========================
+       OPENING HOOK BANNER
+    =========================== */
+    #hook-banner {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 14px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    #hook-banner span {
+      color: var(--accent);
+    }
+    @media (max-width: 480px) {
+      #hook-banner { font-size: 12.5px; padding: 12px 16px; }
+    }
+
+    /* ===========================
+       SECTION 01 — HERO
+    =========================== */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(0,8,135,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      margin-bottom: 24px;
+    }
+    .hero-h1 {
+      margin-bottom: 24px;
+    }
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 20px);
+      color: #444;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .hero-loss-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(237,81,194,0.06);
+      border: 1px solid rgba(237,81,194,0.2);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 40px;
+    }
+    .hero-loss-bar .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.5; transform:scale(1.3); }
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-cta-note {
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* ===========================
+       SECTION 02 — VISUAL PROOF
+    =========================== */
+    #visual-proof { background: var(--surface); }
+    .before-after-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .ba-col {
+      position: relative;
+    }
+    .ba-col--before { border-right: 2px solid var(--border); }
+    .ba-col-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      background: #dde;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: #888;
+    }
+    .ba-col-img img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .ba-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 20px 0;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .ba-label--before { color: #888; }
+    .ba-label--after { color: var(--accent); }
+    .ba-col-content {
+      padding: 16px 20px 24px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+    }
+    .ba-col--before .ba-col-content { color: #888; text-decoration: none; }
+    .ba-col--after .ba-col-content { color: var(--text); font-weight: 500; }
+    .divider-label {
+      position: relative;
+      text-align: center;
+      margin: 32px 0;
+    }
+    .divider-label::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+    .divider-label span {
+      position: relative;
+      background: var(--surface);
+      padding: 0 16px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    @media (max-width: 600px) {
+      .before-after-grid { grid-template-columns: 1fr; }
+      .ba-col--before { border-right: none; border-bottom: 2px solid var(--border); }
+      .ba-col-img img { height: 180px; }
+    }
+
+    /* ===========================
+       SECTION 03 — AUTOPSY
+    =========================== */
+    #autopsy { background: var(--white); }
+    .autopsy-excerpt {
+      background: #fafafa;
+      border-left: 3px solid var(--border);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      font-size: 15px;
+      color: #777;
+      font-style: italic;
+      margin: 12px 0 8px;
+      line-height: 1.6;
+    }
+    .autopsy-verdict {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 8px;
+      font-size: 15px;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    .autopsy-verdict .icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .autopsy-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .autopsy-item:last-child { border-bottom: none; }
+    .autopsy-num {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 6px;
+    }
+    .autopsy-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    /* ===========================
+       SECTION 04 — CADEAU
+    =========================== */
+    #cadeau { background: var(--surface); }
+    .cadeau-header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .value-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 6px 14px;
+      border-radius: 100px;
+    }
+    .lang-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .lang-tab {
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: #888;
+      transition: all 0.2s;
+    }
+    .lang-tab.active {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+    .listing-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .listing-card-header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 20px 28px;
+    }
+    .listing-card-header h4 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .listing-card-header p {
+      font-size: 13px;
+      opacity: 0.7;
+      margin: 0;
+    }
+    .listing-version {
+      padding: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .listing-version:last-child { border-bottom: none; }
+    .listing-version-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .listing-version p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .listing-version ul {
+      padding-left: 20px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .annotation {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(0,8,135,0.03);
+      border: 1px solid rgba(0,8,135,0.08);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .annotation-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+    .annotation strong { color: var(--primary); font-weight: 700; }
+
+    /* ===========================
+       PROPERTY IMAGE BLOCK
+    =========================== */
+    #property-image-block {
+      padding: 48px 0;
+      background: var(--white);
+    }
+    .property-img-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .property-img-wrap img {
+      width: 100%;
+      height: 440px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      background: #dde;
+    }
+    .property-img-label {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    /* ===========================
+       SECTION 05 — INACTION COST
+    =========================== */
+    #inaction { background: var(--surface); }
+    .inaction-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .inaction-table th {
+      background: var(--primary);
+      color: var(--white);
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .inaction-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+      vertical-align: top;
+    }
+    .inaction-table tr:last-child td { border-bottom: none; }
+    .inaction-table tr:nth-child(odd) td { background: #fcfcfc; }
+    .inaction-table .val {
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    .inaction-callout {
+      margin-top: 32px;
+      background: var(--white);
+      border: 1px solid rgba(237,81,194,0.2);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 24px 28px;
+    }
+    .inaction-callout p {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.5;
+    }
+
+    /* ===========================
+       SECTION 06 — CREDIBILITY
+    =========================== */
+    #credibility { background: var(--white); }
+    .method-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    @media (max-width: 600px) {
+      .method-grid { grid-template-columns: 1fr; }
+    }
+    .method-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+    .method-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .method-card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .proof-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .proof-stat-num {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .proof-stat-label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* ===========================
+       SECTION 07 — MECHANISM
+    =========================== */
+    #mechanism { background: var(--surface); }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 48px;
+      bottom: 48px;
+      width: 1px;
+      background: var(--border);
+    }
+    .step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding: 28px 0;
+    }
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .step-body h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+    .step-body .outcome {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ===========================
+       SECTION 08 — FINAL CTA
+    =========================== */
+    #final-cta {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 100px 0;
+    }
+    #final-cta h2 {
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    #final-cta .sub {
+      font-size: 18px;
+      opacity: 0.75;
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .cta-urgency {
+      font-size: 13px;
+      opacity: 0.55;
+      margin-top: 20px;
+      font-style: italic;
+    }
+    #final-cta .closing-line {
+      margin-top: 40px;
+      font-size: 15px;
+      opacity: 0.55;
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    footer {
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ===========================
+       SCROLL REVEAL
+    =========================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HOOK D'OUVERTURE — PREMIER ÉLÉMENT RENDU
+═══════════════════════════════════════════════════════ -->
+<div id="hook-banner">
+  🎁 <strong>Natacha, voici votre cadeau</strong> — une annonce entièrement réécrite, offerte <span>gratuitement</span>, sans condition. Elle est là, maintenant, sur cette page.
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 01 — HERO
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-01-HERO -->
+<section id="hero">
+  <div class="container">
+
+    <div class="hero-eyebrow fade-in">
+      <span class="badge badge--primary">L'Annonce Ressuscitée</span>
+    </div>
+
+    <h1 class="hero-h1 fade-in">
+      Natacha, votre annonce<br>
+      Avenue des Chataigniers<br>
+      <em style="color:var(--accent); font-style:normal;">perd des acheteurs — chaque jour.</em>
+    </h1>
+
+    <p class="hero-sub fade-in">
+      Vous avez investit dans la rénovation. Vous avez fixé un prix justifié.
+      Mais votre annonce, telle qu'elle est rédigée aujourd'hui, laisse partir des acheteurs qualifiés — silencieusement, sans que vous le sachiez.
+      Ci-dessous, la version qui aurait dû être publiée.
+    </p>
+
+    <div class="hero-loss-bar fade-in">
+      <span class="dot"></span>
+      Avec ~111 jours de délai moyen de vente en Flandre (ERA, janv. 2026), chaque semaine compte.
+    </div>
+
+    <div class="hero-cta-group fade-in">
+      <a href="mailto:gradi@homieuxmedia.com" class="btn-cta">Discuter de mes besoins avec Gradi</a>
+      <span class="hero-cta-note">Ou continuez à lire — votre cadeau complet vous attend en bas.</span>
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-01-HERO -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 02 — VISUAL PROOF
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-02-VISUAL-PROOF -->
+<section id="visual-proof" class="section surface-bg">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="badge" style="margin-bottom:20px;">Avant / Après</span>
+      <h2 style="margin-bottom:12px;">Ce que voit un acheteur — et ce qu'il <em>devrait</em> voir.</h2>
+      <p style="color:#666; max-width:580px; margin-bottom:36px;">
+        La même maison. Le même prix. Deux textes radicalement différents.
+        L'un laisse les acheteurs indifférents. L'autre les pousse à décrocher le téléphone.
+      </p>
+    </div>
+
+    <div class="before-after-grid reveal">
+
+      <!-- BEFORE -->
+      <div class="ba-col ba-col--before">
+        <div class="ba-col-img">
+          <img src="before.jpg" alt="Capture de l'annonce actuelle sur Immoweb" />
+        </div>
+        <div class="ba-label ba-label--before">
+          <span>✗</span> Votre annonce actuelle
+        </div>
+        <div class="ba-col-content">
+          <strong style="color:#555;">Titre Immoweb :</strong><br>
+          "Maison à vendre — 4 chambres | 184 m²"<br><br>
+          <strong style="color:#555;">Accroche :</strong><br>
+          "Charmante maison rénovée idéalement située à Rhode-Saint-Genèse, dans le très recherché quartier du Parvis, cette élégante maison 3 façades entièrement rénovée saura vous séduire par son style contemporain…"<br><br>
+          <em style="font-size:13px;">Version néerlandaise : absente.</em>
+        </div>
+      </div>
+
+      <!-- AFTER -->
+      <div class="ba-col ba-col--after">
+        <div class="ba-col-img">
+          <img src="after.jpg" alt="Mockup de la version optimisée de l'annonce" />
+        </div>
+        <div class="ba-label ba-label--after">
+          <span>✓</span> Version optimisée
+        </div>
+        <div class="ba-col-content">
+          <strong style="color:var(--primary);">Titre Immoweb :</strong><br>
+          "Rhode-Saint-Genèse (Parvis) : Maison 3 façades entièrement rénovée – 184 m² – 4 CH."<br><br>
+          <strong style="color:var(--primary);">Accroche :</strong><br>
+          "Acheter une maison rénovée, c'est s'épargner des mois de travaux. Cette maison 3 façades de 184 m² a été pensée pour répondre aux exigences de vie actuelles, sans compromis sur l'espace ou le style."<br><br>
+          <em style="font-size:13px; color:var(--accent);">Version néerlandaise rédigée. Marché anglophone couvert.</em>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-02-VISUAL-PROOF -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 03 — CURRENT LISTING AUTOPSY
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-03-AUTOPSY -->
+<section id="autopsy" class="section">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="badge" style="margin-bottom:20px;">Autopsy</span>
+      <h2 style="margin-bottom:12px;">Pourquoi votre annonce actuelle freine les acheteurs.</h2>
+      <p style="color:#666; max-width:560px; margin-bottom:36px;">
+        Ce n'est pas votre bien qui pose problème. C'est le texte qui l'habille.
+        Cinq erreurs de copywriting qui coûtent des contacts — identifiées mot à mot dans votre annonce.
+      </p>
+    </div>
+
+    <!-- Autopsy item 1 -->
+    <div class="autopsy-item reveal">
+      <div class="autopsy-num">Erreur 01</div>
+      <div class="autopsy-title">Un titre générique qui noie votre bien dans la masse.</div>
+      <div class="autopsy-excerpt">
+        "Maison à vendre — 4 chambres | 184 m²"
+      </div>
+      <div class="autopsy-verdict">
+        <span class="icon">⚡</span>
+        <span>Sur Immoweb, 119 maisons sont à vendre à Rhode-Saint-Genèse en ce moment (avril 2026). Ce titre ne différencie rien : ni le quartier Parvis, ni la rénovation, ni la configuration 3 façades. L'acheteur qui scan les résultats passe sans s'arrêter.</span>
+      </div>
+    </div>
+
+    <!-- Autopsy item 2 -->
+    <div class="autopsy-item reveal">
+      <div class="autopsy-num">Erreur 02</div>
+      <div class="autopsy-title">Le conditionnel tue la confiance avant même la première ligne.</div>
+      <div class="autopsy-excerpt">
+        "…cette élégante maison 3 façades entièrement rénovée <strong>saura vous séduire</strong> par son style contemporain…"
+      </div>
+      <div class="autopsy-verdict">
+        <span class="icon">⚡</span>
+        <span>"Saura vous séduire" : le conditionnel introduit un doute. Il dit implicitement "peut-être". Un acheteur décidé veut une affirmation, pas une promesse incertaine. Remplacé par un présent factuel dans la version optimisée.</span>
+      </div>
+    </div>
+
+    <!-- Autopsy item 3 -->
+    <div class="autopsy-item reveal">
+      <div class="autopsy-num">Erreur 03</div>
+      <div class="autopsy-title">Des clichés qui signalent un texte non travaillé.</div>
+      <div class="autopsy-excerpt">
+        "…parfaite pour recevoir et partager de beaux moments en famille ou entre amis."
+      </div>
+      <div class="autopsy-verdict">
+        <span class="icon">⚡</span>
+        <span>Cette phrase apparaît dans des milliers d'annonces belges. Elle ne dit rien de votre bien. Elle occupe de l'espace sans créer d'image. Elle a été supprimée et remplacée par une description architecturale précise de la cuisine : surface, tons, équipement, ergonomie.</span>
+      </div>
+    </div>
+
+    <!-- Autopsy item 4 -->
+    <div class="autopsy-item reveal">
+      <div class="autopsy-num">Erreur 04</div>
+      <div class="autopsy-title">Le jardin présenté comme un manque — et non comme un potentiel.</div>
+      <div class="autopsy-excerpt">
+        "Le jardin <strong>reste à aménager</strong> selon vos envies, laissant libre cours à vos projets paysagers."
+      </div>
+      <div class="autopsy-verdict">
+        <span class="icon">⚡</span>
+        <span>"Reste à aménager" signale un travail à faire. Le cerveau de l'acheteur lit : coût supplémentaire, délai, effort. La version optimisée recadre ce terrain de 579 m², plat, orienté Sud-Ouest, comme une page blanche à fort potentiel — un actif, pas un défaut.</span>
+      </div>
+    </div>
+
+    <!-- Autopsy item 5 -->
+    <div class="autopsy-item reveal">
+      <div class="autopsy-num">Erreur 05</div>
+      <div class="autopsy-title">Zéro version néerlandaise — la moitié du marché ignorée.</div>
+      <div class="autopsy-excerpt">
+        "Helaas hebben we geen Nederlandse vertaling ontvangen voor deze tekst."
+      </div>
+      <div class="autopsy-verdict">
+        <span class="icon">⚡</span>
+        <span>Immoweb affiche littéralement ce message en néerlandais à la place de votre description. Rhode-Saint-Genèse est en Flandre. Les acheteurs flamands et néerlandophones constituent une part significative du marché local. Leur afficher un aveu d'absence de traduction est une friction directe. Trois versions sont livrées ci-dessous : FR, NL, EN.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-03-AUTOPSY -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 04 — OPTIMIZED VERSION (CADEAU)
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-04-CADEAU -->
+<section id="cadeau" class="section surface-bg">
+  <div class="container">
+
+    <div class="reveal">
+      <div class="cadeau-header">
+        <h2 style="margin:0;">Votre cadeau — Valeur marché 450 €</h2>
+        <span class="value-badge">🎁 450 € — Offert</span>
+      </div>
+      <p style="color:#555; max-width:580px; margin-bottom:36px;">
+        Trois versions complètes, rédigées. À copier-coller sur Immoweb et vos réseaux sociaux dès aujourd'hui.
+        Chaque amélioration stratégique est annotée pour que vous compreniez le raisonnement.
+      </p>
+    </div>
+
+    <!-- Language Tabs -->
+    <div class="lang-tabs reveal">
+      <button class="lang-tab active" onclick="switchLang('fr', this)">🇫🇷 Version FR</button>
+      <button class="lang-tab" onclick="switchLang('nl', this)">🇳🇱 Version NL</button>
+      <button class="lang-tab" onclick="switchLang('en', this)">🇬🇧 Version EN</button>
+    </div>
+
+    <!-- ── FR ── -->
+    <div id="lang-fr" class="lang-content active reveal">
+      <div class="listing-card">
+        <div class="listing-card-header">
+          <h4>Français — Version courte (Immoweb, orientée SEO)</h4>
+          <p>À copier dans le champ "Description" d'Immoweb</p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Titre optimisé</div>
+          <p><strong>Rhode-Saint-Genèse (Parvis) : Maison 3 façades entièrement rénovée – 184 m² – 4 CH.</strong></p>
+
+          <div class="annotation">
+            <span class="annotation-icon">🔍</span>
+            <span><strong>Stratégie titre :</strong> intègre le quartier (valeur de localisation), la configuration (3 façades = différenciateur), la surface et le nombre de chambres — les quatre critères de filtrage Immoweb les plus utilisés.</span>
+          </div>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Corps du texte</div>
+          <p>Découvrez cette maison de 1944 remise à neuf, offrant des volumes contemporains et une circulation fluide. Le rez-de-chaussée s'ouvre sur un espace de vie de 50 m², baigné de lumière naturelle, prolongé par une cuisine américaine super-équipée de 12 m².</p>
+
+          <p>L'espace nuit se répartit sur deux niveaux : le premier étage propose 3 chambres (11, 14 et 15 m²) avec salle de douche moderne. Le dernier étage est entièrement privatisé en une vaste suite parentale avec salle de bain attenante.</p>
+
+          <div class="annotation">
+            <span class="annotation-icon">🧠</span>
+            <span><strong>Stratégie structure :</strong> la suite parentale est immédiatement identifiable dans la hiérarchie du texte — ce n'est plus noyée en fin de paragraphe. Les acheteurs de maisons à 915 000 € cherchent précisément cet espace de retraite privé.</span>
+          </div>
+
+          <p style="margin-top:16px;"><strong>Atouts clés :</strong></p>
+          <ul>
+            <li>Jardin plat orienté Sud-Ouest (terrain de 579 m² au total).</li>
+            <li>Terrasse aménagée de 30 m².</li>
+            <li>Stationnement aisé : 1 garage et 2 emplacements extérieurs.</li>
+            <li>Design affirmé (éléments vitrés style atelier).</li>
+          </ul>
+
+          <div class="annotation">
+            <span class="annotation-icon">☀️</span>
+            <span><strong>Stratégie jardin :</strong> "Plat orienté Sud-Ouest" est un signal fort pour les familles. L'orientation est mentionnée avant toute autre caractéristique extérieure — c'est le premier critère de qualité de vie que cherche un acheteur avec enfants.</span>
+          </div>
+
+          <p style="margin-top:16px;"><strong>Informations techniques :</strong></p>
+          <p>PEB C (207 kWh/m²). Chauffage au gaz. Double vitrage. Caves pratiques (20 m²). Revenu cadastral : 1.784 €.</p>
+
+          <div class="annotation">
+            <span class="annotation-icon">📋</span>
+            <span><strong>Stratégie technique :</strong> le PEB C est mentionné avec le chiffre exact — pas seulement la lettre. Cela projette de la transparence et rassure les acheteurs formés par le marché actuel. La classe C n'oblige à aucune rénovation obligatoire, ce qui est un avantage explicite.</span>
+          </div>
+
+          <p style="margin-top:16px;">Contactez Immo IDS pour planifier votre visite et découvrir ce bien prêt à vivre.</p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Version longue — Réseaux sociaux</div>
+
+          <p><strong>Votre nouvelle adresse au cœur du Parvis : l'alliance parfaite entre volumes contemporains et potentiel extérieur.</strong></p>
+
+          <p>Acheter une maison rénovée, c'est s'épargner des mois de travaux. Située sur l'Avenue des Châtaigniers à Rhode-Saint-Genèse, cette maison 3 façades de 184 m² a été pensée pour répondre aux exigences de vie actuelles, sans compromis sur l'espace ou le style.</p>
+
+          <p>Dès l'entrée, le ton est donné : des lignes épurées et des séparations vitrées façon atelier qui laissent circuler la lumière. La pièce de vie de 50 m² offre une fluidité totale entre le salon et la salle à manger. Elle se prolonge naturellement vers une cuisine américaine de 12 m², super-équipée (tons clairs et crédence sombre), pensée pour conjuguer ergonomie et convivialité.</p>
+
+          <p>La distribution des étages garantit l'intimité de chacun. Le premier niveau dessert trois belles chambres (11, 14 et 15 m²), idéales pour des enfants, accompagnées d'une salle de douche contemporaine. Le deuxième étage ? Une suite parentale exclusive, véritable espace isolé avec sa propre salle de bain.</p>
+
+          <p><strong>L'extérieur, votre page blanche :</strong> Le bien dispose d'une belle terrasse de 30 m² directement accessible depuis les pièces de vie. Le vaste jardin arrière, orienté Sud-Ouest, vous garantit un ensoleillement optimal jusqu'au soir. Actuellement plat et dégagé, il n'attend que votre projet d'aménagement paysager pour devenir le prolongement naturel de votre maison.</p>
+
+          <p>Côté pratique, la maison dispose d'un garage, de 20 m² de caves et de deux emplacements de parking extérieurs. Le tout avec une performance énergétique maîtrisée (PEB C, chauffage au gaz, double vitrage) et une proximité immédiate avec les écoles, commerces et transports.</p>
+
+          <p>Un bien clé en main à l'intérieur, avec un fort potentiel extérieur. Organisons une visite avec Immo IDS.</p>
+
+          <div class="annotation">
+            <span class="annotation-icon">📱</span>
+            <span><strong>Stratégie réseaux sociaux :</strong> le lead "Acheter une maison rénovée, c'est s'épargner des mois de travaux" remplace immédiatement l'acheteur dans sa réalité de décision. Le texte crée une projection émotionnelle progressive — de l'entrée jusqu'au jardin — qui suit le parcours de visite.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── NL ── -->
+    <div id="lang-nl" class="lang-content reveal">
+      <div class="listing-card">
+        <div class="listing-card-header">
+          <h4>Nederlands — Korte versie (Immoweb, SEO-gericht)</h4>
+          <p>Te kopiëren in het veld "Beschrijving" op Immoweb</p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Geoptimaliseerde titel</div>
+          <p><strong>Sint-Genesius-Rode (Parochie) : Volledig gerenoveerde 3-gevelwoning – 184 m² – 4 SLPK.</strong></p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Tekst</div>
+          <p>Ontdek deze vernieuwde woning uit 1944, gekenmerkt door hedendaagse volumes en een vlotte indeling. Het gelijkvloers opent naar een lichtrijke leefruimte van 50 m², die naadloos overgaat in een super-uitgeruste Amerikaanse keuken van 12 m².</p>
+
+          <p>Het nachtgedeelte is verdeeld over twee verdiepingen: de eerste verdieping biedt 3 slaapkamers (11, 14 en 15 m²) met een moderne doucheruimte. De bovenste verdieping is volledig ingericht als een ruime master suite met eigen badkamer.</p>
+
+          <p><strong>Belangrijkste troeven:</strong></p>
+          <ul>
+            <li>Vlakke, Zuid-West georiënteerde tuin (totale perceeloppervlakte 579 m²).</li>
+            <li>Aangelegd terras van 30 m².</li>
+            <li>Vlotte parkeergelegenheid: 1 garage en 2 autostaanplaatsen buiten.</li>
+            <li>Strak design (glazen deuren in atelierstijl).</li>
+          </ul>
+
+          <p style="margin-top:16px;"><strong>Technische informatie:</strong></p>
+          <p>EPC C (207 kWh/m²). Verwarming op gas. Dubbele beglazing. Praktische kelders (20 m²). Kadastraal inkomen: € 1.784.</p>
+          <p>Neem contact op met Immo IDS om uw bezoek te plannen voor deze instapklare woning.</p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Lange versie — Sociale media</div>
+
+          <p><strong>Uw nieuwe adres in het hart van de Parochie: de perfecte balans tussen moderne ruimtes en buitenpotentieel.</strong></p>
+
+          <p>Een gerenoveerde woning kopen, betekent uzelf maandenlange verbouwingen besparen. Gelegen aan de Kastanjebomenlaan in Sint-Genesius-Rode, is deze 3-gevelwoning van 184 m² ontworpen om te voldoen aan de huidige woonbehoeften, zonder in te boeten aan ruimte of stijl.</p>
+
+          <p>Bij het binnenkomen is de toon meteen gezet: strakke lijnen en glazen scheidingswanden die het licht optimaal laten doorstromen. De leefruimte van 50 m² biedt een perfecte flow tussen het salon en de eetkamer. Deze loopt natuurlijk over in een super-uitgeruste open keuken van 12 m², ontworpen voor zowel ergonomie als gezelligheid.</p>
+
+          <p>De indeling van de verdiepingen garandeert ieders privacy. De eerste verdieping telt drie mooie slaapkamers (11, 14 en 15 m²), ideaal voor kinderen, samen met een hedendaagse doucheruimte. De tweede verdieping? Een exclusieve master suite, een echte afgesloten ruimte met een eigen badkamer.</p>
+
+          <p><strong>De buitenkant, uw blanco canvas:</strong> De woning beschikt over een mooi terras van 30 m², rechtstreeks toegankelijk vanuit de leefruimtes. De grote achtertuin, Zuid-West georiënteerd, garandeert u optimale zon tot in de avond. Momenteel is de tuin vlak en open, klaar voor uw eigen landschapsproject.</p>
+
+          <p>Praktisch gezien beschikt de woning over een garage, 20 m² kelders en twee buitenparkeerplaatsen. EPC C, gasverwarming, dubbele beglazing. Onmiddellijke nabijheid van scholen, winkels en openbaar vervoer.</p>
+
+          <p>Een instapklaar pand binnenin, met een sterk buitenpotentieel. Plan uw bezoek in via Immo IDS.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EN ── -->
+    <div id="lang-en" class="lang-content reveal">
+      <div class="listing-card">
+        <div class="listing-card-header">
+          <h4>English — Short version (Immoweb, SEO-ready)</h4>
+          <p>International buyers — Brussels expat market</p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Optimised title</div>
+          <p><strong>Rhode-Saint-Genèse (Parvis) : Fully renovated semi-detached house – 184 sqm – 4 Bed.</strong></p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Listing copy</div>
+          <p>Discover this updated 1944 home offering contemporary living spaces and an intuitive floor plan. The ground floor opens into a light-filled 50 sqm living and dining area, flowing seamlessly into a 12 sqm fully equipped open-concept kitchen.</p>
+
+          <p>The private quarters span two upper levels: the first floor features 3 bedrooms (11, 14, and 15 sqm) and a modern shower room. The top floor is entirely dedicated to a spacious primary suite with an en-suite bathroom.</p>
+
+          <p><strong>Key Features:</strong></p>
+          <ul>
+            <li>Flat, South-West facing garden (total plot of 579 sqm).</li>
+            <li>Finished 30 sqm terrace.</li>
+            <li>Ample parking: 1 indoor garage and 2 exterior spaces.</li>
+            <li>Modern finishes (steel-framed glass doors).</li>
+          </ul>
+
+          <p style="margin-top:16px;"><strong>Technical Information:</strong></p>
+          <p>EPC rating C (207 kWh/sqm). Gas heating. Double glazing. Practical basement storage (20 sqm). Cadastral income: €1,784.</p>
+          <p>Contact Immo IDS to schedule your viewing of this move-in-ready property.</p>
+        </div>
+
+        <div class="listing-version">
+          <div class="listing-version-label">Long version — Social media</div>
+
+          <p><strong>Your new home in the Parvis neighbourhood: The perfect blend of modern interiors and outdoor potential.</strong></p>
+
+          <p>Buying a renovated home means skipping the stress of construction. Located on Avenue des Chataigniers in Rhode-Saint-Genèse, this 184 sqm semi-detached home has been redesigned for modern living without compromising on space or aesthetic appeal.</p>
+
+          <p>From the entryway, the design sets a clear standard: clean lines and steel-framed glass partitions that maximise natural light. The 50 sqm main living area provides a seamless flow between the lounge and dining spaces, opening directly into a 12 sqm fully equipped modern kitchen built for both function and entertaining.</p>
+
+          <p>The bedroom layout ensures privacy for everyone. The first floor offers three well-sized bedrooms (11, 14, and 15 sqm)—ideal for children or a home office—alongside a contemporary shower room. The second floor? An exclusive primary suite, offering a secluded retreat complete with its own private bathroom.</p>
+
+          <p><strong>The exterior, your blank canvas:</strong> The property features a high-quality 30 sqm terrace accessible directly from the living areas. The expansive, South-West facing rear garden guarantees excellent sunlight through the evening. Currently flat and cleared, it serves as a blank canvas awaiting your landscaping vision.</p>
+
+          <p>The property includes a garage, 20 sqm of basement storage, and two outdoor parking spaces. EPC C, gas heating, double glazing. Close proximity to schools, shops, and transport.</p>
+
+          <p>Turn-key on the inside with incredible outdoor potential. Let's arrange a tour with Immo IDS.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-04-CADEAU -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PROPERTY IMAGE — entre Section 04 et Section 05
+═══════════════════════════════════════════════════════ -->
+<div id="property-image-block">
+  <div class="property-img-wrap reveal">
+    <img src="property.jpg" alt="Photo du bien — Avenue des Chataigniers 15, Rhode-Saint-Genèse" />
+    <p class="property-img-label">Le bien concerné — Avenue des Chataigniers 15, 1640 — Rhode-Saint-Genèse</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 05 — LOSS QUANTIFICATION
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-05-INACTION -->
+<section id="inaction" class="section surface-bg">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="badge" style="margin-bottom:20px;">Calcul du coût de l'inaction</span>
+      <h2 style="margin-bottom:12px;">Ce que Natacha laisse sur la table — semaine après semaine.</h2>
+      <p style="color:#666; max-width:560px; margin-bottom:36px;">
+        Ces chiffres sont issus de sources publiques vérifiables (ERA, Immoweb, Trior.be, Immolytics/Statbel, avril 2026).
+        Aucune donnée n'a été inventée ou amplifiée.
+      </p>
+    </div>
+
+    <table class="inaction-table reveal">
+      <thead>
+        <tr>
+          <th>Indicateur</th>
+          <th>Donnée vérifiée</th>
+          <th>Impact direct</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Délai moyen de vente</strong><br><span style="font-size:13px;color:#888;">Maisons, Flandre (ERA Immo, jan. 2026)</span></td>
+          <td class="val">~111 jours</td>
+          <td>Chaque semaine de stagnation, vos annonces concurrentes avancent. 15 maisons à RSG sont déjà "sous option".</td>
+        </tr>
+        <tr>
+          <td><strong>Concurrence directe</strong><br><span style="font-size:13px;color:#888;">Immoweb Rhode-St-Genèse, avril 2026</span></td>
+          <td class="val">119 maisons</td>
+          <td>Votre annonce est en concurrence directe avec 119 autres biens. Le texte est souvent le seul différenciateur visible avant une visite.</td>
+        </tr>
+        <tr>
+          <td><strong>Positionnement prix</strong><br><span style="font-size:13px;color:#888;">Trior.be, sept. 2025 / Properstar, avril 2026</span></td>
+          <td class="val">4 973 €/m²</td>
+          <td>Vous êtes en haut de fourchette (moyenne communale : 3 294 €/m²). À ce niveau de prix, les acheteurs exigent une présentation premium. Un texte générique crée un décalage de perception.</td>
+        </tr>
+        <tr>
+          <td><strong>Version NL absente</strong><br><span style="font-size:13px;color:#888;">Constat Immoweb, annonce actuelle</span></td>
+          <td class="val">0 mot en NL</td>
+          <td>Immoweb affiche "Helaas hebben we geen Nederlandse vertaling ontvangen" à la place de votre description. Le marché flamand et néerlandophone ne reçoit aucun message sur votre bien.</td>
+        </tr>
+        <tr>
+          <td><strong>Impact copywriting professionnel</strong><br><span style="font-size:13px;color:#888;">Bonnes pratiques agences, estimation prudente</span></td>
+          <td class="val">+5 à +10 %</td>
+          <td>Sur un bien à 915 000 €, une accélération de 10 % du délai de vente représente plusieurs semaines de charges, intérêts et manque à gagner réinvestissable. Information non vérifiée localement — à confirmer.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="inaction-callout reveal">
+      <p>Votre bien est en haut de gamme du marché de Rhode-Saint-Genèse. À 4 973 €/m², les acheteurs qualifiés ne valident pas un prix premium avec un texte standard. Chaque jour supplémentaire sans copy optimisée est un jour où un concurrent mieux présenté est choisi à votre place.</p>
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-05-INACTION -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 06 — CREDIBILITY & DIFFERENTIATION
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-06-CREDIBILITY -->
+<section id="credibility" class="section">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="badge" style="margin-bottom:20px;">Méthode</span>
+      <h2 style="margin-bottom:12px;">Pourquoi cette approche — et pas n'importe quelle réécriture.</h2>
+      <p style="color:#666; max-width:560px; margin-bottom:36px;">
+        L'annonce optimisée que vous venez de lire n'est pas une reformulation de l'existant.
+        C'est une reconstruction complète selon une méthode en trois axes.
+      </p>
+    </div>
+
+    <div class="method-grid reveal">
+      <div class="method-card">
+        <h4>📍 Localisation-first</h4>
+        <p>Chaque annonce commence par ancrer le bien dans son quartier avec précision — pas juste la commune. Le quartier Parvis à Rhode-Saint-Genèse est un signal de valeur pour les familles bruxelloises aisées. Il est mentionné dès le titre.</p>
+      </div>
+      <div class="method-card">
+        <h4>🧠 Copy orienté projection</h4>
+        <p>Les acheteurs ne lisent pas une description — ils cherchent à se projeter. Chaque paragraphe décrit un usage, pas un mur. "La leefruimte biedt een perfecte flow" vend un mode de vie, pas 50 m².</p>
+      </div>
+      <div class="method-card">
+        <h4>🌍 Couverture multilingue</h4>
+        <p>FR, NL, EN — trois versions rédigées nativement, pas traduites mécaniquement. Rhode-Saint-Genèse attire des cadres bruxellois, des familles flamandes et des expatriés internationaux. Chaque version parle à son audience.</p>
+      </div>
+      <div class="method-card">
+        <h4>📊 Ancrage factuel</h4>
+        <p>PEB C avec le chiffre exact. Surface de chaque pièce. Revenus cadastraux. Orientation du jardin. Les acheteurs premium valident leur décision avec des données — pas avec des adjectifs.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;" class="reveal">
+      <div class="card" style="background:var(--surface);">
+        <p style="font-size:14px; color:#888; margin-bottom:16px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;">Benchmarks secteur (bonnes pratiques agences — estimation prudente)</p>
+        <div style="display:flex; gap:40px; flex-wrap:wrap;">
+          <div class="proof-stat">
+            <span class="proof-stat-num">+5–10%</span>
+            <span class="proof-stat-label">sur le prix perçu et la vitesse de vente estimés avec home staging + photos pro<br><em style="font-size:12px;">(standard secteur, non chiffré localement — information non vérifiée)</em></span>
+          </div>
+          <div class="proof-stat">
+            <span class="proof-stat-num">3</span>
+            <span class="proof-stat-label">langues couvertes<br>dans les versions livrées<br>(FR · NL · EN)</span>
+          </div>
+          <div class="proof-stat">
+            <span class="proof-stat-num">0 €</span>
+            <span class="proof-stat-label">coût de cet audit<br>pour vous, aujourd'hui</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-06-CREDIBILITY -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 07 — MECHANISM
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-07-MECHANISM -->
+<section id="mechanism" class="section surface-bg">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="badge" style="margin-bottom:20px;">La suite, si vous le souhaitez</span>
+      <h2 style="margin-bottom:12px;">Trois étapes pour ne plus jamais perdre un mandat sur le texte.</h2>
+      <p style="color:#666; max-width:520px; margin-bottom:36px;">
+        Ce que vous venez de recevoir est réalisable pour chaque bien de votre portefeuille — et pour votre présence sur les réseaux sociaux.
+      </p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Un échange de 20 minutes avec Gradi</h4>
+          <p>Vous présentez vos priorités actuelles : biens à écouler, cibles d'acheteurs, canaux utilisés. Pas de pitch. Pas de présentation commerciale. Une conversation de diagnostic.</p>
+          <span class="outcome">→ Résultat : un plan d'action clair, immédiatement actionnable.</span>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Réécriture systématique de vos annonces actives</h4>
+          <p>Chaque bien de votre portefeuille reçoit une annonce en FR, NL et EN — rédigée selon la méthode démontrée ci-dessus. Livraison en 48h ouvrables, prête à copier-coller sur Immoweb et vos réseaux.</p>
+          <span class="outcome">→ Résultat : plus aucun acheteur ne reçoit un message générique de votre part.</span>
+        </div>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Filtrage automatisé des leads entrants</h4>
+          <p>Une infrastructure de qualification simple — sans outil complexe — pour que vous ne consacriez votre temps qu'aux acheteurs déjà pré-qualifiés. Fini les visites avec des curieux sans capacité d'achat réelle.</p>
+          <span class="outcome">→ Résultat : chaque heure de rendez-vous est investie dans une opportunité réelle.</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-07-MECHANISM -->
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 08 — FINAL CTA
+═══════════════════════════════════════════════════════ -->
+<!-- SECTION-08-FINAL-CTA -->
+<section id="final-cta">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="badge" style="background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.85); border-color:rgba(255,255,255,0.2); margin-bottom:28px;">Prochaine étape</span>
+
+      <h2>Vous avez maintenant une annonce qui convertit.<br>Voici ce qu'on peut construire ensemble.</h2>
+
+      <p class="sub">
+        Ce texte, vous pouvez l'utiliser dès aujourd'hui — sans rien nous devoir.
+        Si vous voulez ce niveau de qualité appliqué à l'ensemble de votre portefeuille et de votre présence digitale,
+        la conversation commence ici.
+      </p>
+
+      <a href="mailto:gradi@homieuxmedia.com" class="btn-cta">Discuter de mes besoins avec Gradi</a>
+
+      <p class="cta-urgency">
+        Chaque annonce non optimisée est un mandat offert à un concurrent mieux présenté.
+      </p>
+
+      <p class="closing-line">
+        Natacha, vous méritez un portefeuille qui travaille pour vous — pas l'inverse.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- /SECTION-08-FINAL-CTA -->
+
+
+<footer>
+  <p>Page créée par <strong>Gradi · Homieux Media</strong> — <a href="mailto:gradi@homieuxmedia.com" style="color:var(--accent);">gradi@homieuxmedia.com</a></p>
+  <p style="margin-top:6px; color:#ccc;">Données de marché : ERA Immobilier janv. 2026 · Trior.be sept. 2025 · Immoweb avr. 2026 · Immolytics/Statbel Q1 2026</p>
+</footer>
+
+
+<script>
+  /* ── Language tabs ── */
+  function switchLang(lang, btn) {
+    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  /* ── Scroll reveal ── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
